@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getNotesAsync } from "../redux/notes/notesServices";
+import LoadingSpinner from "./LoadingSpinner";
 
 const NoteList = () => {
   const items = useSelector((state) => state.notes.items);
