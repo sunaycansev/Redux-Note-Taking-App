@@ -45,8 +45,8 @@ export const notesSlice = createSlice({
       state.isLoading = true;
     },
     [deleteNotesAsync.fulfilled]: (state, action) => {
-      const id = action.payload;
-      state.items.filter((item) => item.id !== id);
+      const { id } = action.payload;
+      state.items = state.items.filter((item) => item.id !== id);
       state.isLoading = false;
     },
     [deleteNotesAsync.rejected]: (state, action) => {

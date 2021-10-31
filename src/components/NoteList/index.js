@@ -44,7 +44,7 @@ const NoteList = () => {
               <p className="p-5 border-1 border border-danger ">{item.title}</p>
               <button
                 onClick={() => handleDelete(item.id)}
-                className="position-absolute top-0 end-0"
+                className="position-absolute top-0 end-0 btn btn-sm"
               >
                 <FiX className="display-6" />
               </button>
@@ -56,3 +56,7 @@ const NoteList = () => {
   );
 };
 export default NoteList;
+
+// TODO => single note çekilip modal ile default valular gösterilecek ve kişi orada değiiklik yaptıgında update atabilecek
+// TODO => filtered list oluşturuluacak bi filtremele search inputu içindeki değere göre yapılacak ve listeleme filteredList'e göre yapılacak
+// TODO => stil düzenlemeleri yapılacak
