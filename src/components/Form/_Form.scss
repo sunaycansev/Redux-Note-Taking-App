@@ -1,0 +1,28 @@
+form {
+  #textarea-div {
+    textarea {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      width: 700px;
+      height: 180px;
+      border: 1px solid black;
+      padding: 15px;
+      border-radius: 3px;
+      resize: none;
+    }
+    .add-button {
+      bottom: 20px;
+      right: 20px;
+    }
+    .color-btn {
+      width: 40px;
+      height: 40px;
+      opacity: 0.9;
+      transition: all 500ms ease;
+      &:hover {
+        cursor: pointer;
+        opacity: 1;
+        border: 2px solid #323232;
+      }
+    }
+  }
+}
