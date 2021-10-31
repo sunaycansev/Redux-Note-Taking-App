@@ -1,11 +1,23 @@
 import "./_Form.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { postNotesAsync } from "../../redux/notes/notesServices";
 
 const Form = () => {
   const [value, setValue] = useState("");
-  const handleSubmit = (e) => {
+  const [color, setColor] = useState("success");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("form.js/ color state : ", color);
+  }, [color]);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(value);
+    console.log("form.js / value", value);
+    if (!value) {
+      return;
+    }
+    await dispatch(postNotesAsync({ title: value, color: color }));
     setValue("");
   };
   return (
@@ -23,18 +35,31 @@ const Form = () => {
             id="textarea"
             placeholder="Enter your note here..."
           />
+
+          <span className="position-absolute  start-10 d-flex justify-content-center align-items-center">
+            <div
+              className="rounded-circle bg-success color-btn me-3 border-0"
+              onClick={(e) => setColor("success")}
+            ></div>
+            <div
+              className="rounded-circle bg-danger color-btn me-3 border-0"
+              onClick={(e) => setColor("danger")}
+            ></div>
+            <div
+              className="rounded-circle bg-warning color-btn me-3 border-0"
+              onClick={(e) => setColor("warning")}
+            ></div>
+            <div
+              className="rounded-circle bg-info color-btn border-0"
+              onClick={(e) => setColor("info")}
+            ></div>
+          </span>
           <button
             type="submit"
-            className="btn btn-success rounded-pill px-5 add-button position-absolute bottom-5 end-5"
+            className="btn btn-success rounded-pill px-5 add-button position-absolute bottom-5 start-5"
           >
             Add
           </button>
-          <div className="position-absolute top-100 start-10">
-            <button className="rounded-circle bg-success color-btn me-3 border-0"></button>
-            <button className="rounded-circle bg-danger color-btn me-3 border-0"></button>
-            <button className="rounded-circle bg-warning color-btn me-3 border-0"></button>
-            <button className="rounded-circle bg-info color-btn border-0"></button>
-          </div>
         </div>
       </form>
     </div>

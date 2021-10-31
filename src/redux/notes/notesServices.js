@@ -10,3 +10,14 @@ export const getNotesAsync = createAsyncThunk(
     return res.data;
   }
 );
+
+export const postNotesAsync = createAsyncThunk(
+  "notes/postNotesAsync",
+  async (data) => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_BASE_ENDPOINT}/notes`,
+      data
+    );
+    return response.data;
+  }
+);

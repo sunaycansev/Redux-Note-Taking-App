@@ -24,7 +24,7 @@ const NoteList = () => {
         {items.map((item) => (
           <div
             key={item.id}
-            className="col bg-warning border border-1 d-flex justify-content-around align-items-center mx-5"
+            className={`col  border border-1 d-flex justify-content-around align-items-center mx-5 bg-${item.color}`}
           >
             <p className="p-5 border-1 border border-danger ">{item.title}</p>
           </div>
