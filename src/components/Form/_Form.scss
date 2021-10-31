@@ -16,8 +16,12 @@ form {
     .color-btn {
       width: 40px;
       height: 40px;
+      opacity: 0.9;
+      transition: all 500ms ease;
       &:hover {
         cursor: pointer;
+        opacity: 1;
+        border: 2px solid #323232;
       }
     }
   }

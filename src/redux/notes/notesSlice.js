@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getNotesAsync, postNotesAsync } from "./notesServices";
+import {
+  getNotesAsync,
+  postNotesAsync,
+  deleteNotesAsync,
+} from "./notesServices";
 
 const initialState = {
   items: [],
@@ -34,6 +38,19 @@ export const notesSlice = createSlice({
     },
     [postNotesAsync.rejected]: (state, action) => {
       state.isLoadingWhilePost = false;
+      state.error = action.error.message;
+    },
+    // delete note from db
+    [deleteNotesAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteNotesAsync.fulfilled]: (state, action) => {
+      const id = action.payload;
+      state.items.filter((item) => item.id !== id);
+      state.isLoading = false;
+    },
+    [deleteNotesAsync.rejected]: (state, action) => {
+      state.isLoading = false;
       state.error = action.error.message;
     },
   },

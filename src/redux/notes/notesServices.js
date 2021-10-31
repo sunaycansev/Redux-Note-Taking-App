@@ -21,3 +21,13 @@ export const postNotesAsync = createAsyncThunk(
     return response.data;
   }
 );
+
+export const deleteNotesAsync = createAsyncThunk(
+  "notes/deleteNotesAsync",
+  async (id) => {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_API_BASE_ENDPOINT}/notes/${id}`
+    );
+    return response.data;
+  }
+);
