@@ -8,8 +8,12 @@ import {
 } from "../../redux/notes/notesServices";
 import LoadingSpinner from "../LoadingSpinner";
 import { FiX } from "react-icons/fi";
+import { filteredItems } from "../../redux/notes/notesSlice";
 const NoteList = () => {
-  const items = useSelector((state) => state.notes.items);
+  const items = useSelector(filteredItems);
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
   const isLoading = useSelector((state) => state.notes.isLoading);
 
   const dispatch = useDispatch();
@@ -39,15 +43,27 @@ const NoteList = () => {
         {items.map((item) => (
           <React.Fragment key={item.id}>
             <div
-              className={`col  border border-1 d-flex justify-content-around align-items-center mx-5 position-relative bg-${item.color}`}
+              className={`col d-flex justify-content-center align-items-center   border border-1 mb-3 rounded rounded-3   mx-5  bg-${item.color}`}
             >
-              <p className="p-5 border-1 border border-danger ">{item.title}</p>
-              <button
-                onClick={() => handleDelete(item.id)}
-                className="position-absolute top-0 end-0 btn btn-sm"
-              >
-                <FiX className="display-6" />
-              </button>
+              <div className={`card border-0 bg-${item.color}`}>
+                <div className={`card-body bg-${item.color}`}>
+                  <p
+                    className={` text-center card-text fs-4 font-monospace bg-${item.color}`}
+                  >
+                    {item.title}
+                  </p>
+                </div>
+                <div className={`card-footer border-0 bg-${item.color}`}>
+                  <div className="delete border border-1 d-flex flex-column">
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className=" top-0 end-0 btn btn-sm btn-outline-dark"
+                    >
+                      <FiX className="fs-2" />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </React.Fragment>
         ))}
@@ -58,5 +74,4 @@ const NoteList = () => {
 export default NoteList;
 
 // TODO => single note çekilip modal ile default valular gösterilecek ve kişi orada değiiklik yaptıgında update atabilecek
-// TODO => filtered list oluşturuluacak bi filtremele search inputu içindeki değere göre yapılacak ve listeleme filteredList'e göre yapılacak
 // TODO => stil düzenlemeleri yapılacak

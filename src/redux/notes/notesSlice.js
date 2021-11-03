@@ -9,12 +9,17 @@ const initialState = {
   items: [],
   isLoading: false,
   isLoadingWhilePost: false,
+  searchValue: "",
 };
 
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
-  reducers: {},
+  reducers: {
+    changeSearchValue: (state, action) => {
+      state.searchValue = action.payload;
+    },
+  },
   extraReducers: {
     // get Notes from db
     [getNotesAsync.pending]: (state) => {
@@ -55,5 +60,13 @@ export const notesSlice = createSlice({
     },
   },
 });
-
+export const filteredItems = (state) => {
+  if (state.notes.searchValue === "") {
+    return state.notes.items;
+  }
+  return state.notes.items.filter((item) =>
+    item.title.toLowerCase().includes(state.notes.searchValue)
+  );
+};
+export const { changeSearchValue } = notesSlice.actions;
 export default notesSlice.reducer;
