@@ -65,7 +65,7 @@ export const filteredItems = (state) => {
     return state.notes.items;
   }
   return state.notes.items.filter((item) =>
-    item.title.includes(state.notes.searchValue)
+    item.title.toLowerCase().includes(state.notes.searchValue)
   );
 };
 export const { changeSearchValue } = notesSlice.actions;
