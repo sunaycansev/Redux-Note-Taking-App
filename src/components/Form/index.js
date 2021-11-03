@@ -21,7 +21,7 @@ const Form = () => {
     setValue("");
   };
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <div className=" container d-flex justify-content-center align-items-center ">
       <form onSubmit={handleSubmit}>
         <div
           className="my-3 container position-relative my-5"
@@ -36,7 +36,7 @@ const Form = () => {
             placeholder="Enter your note here..."
           />
 
-          <span className="position-absolute  start-10 d-flex justify-content-center align-items-center">
+          <div className="position-absolute  start-0 d-flex justify-content-center align-items-center ">
             <div
               className="rounded-circle bg-success color-btn me-3 border-0"
               onClick={(e) => setColor("success")}
@@ -53,7 +53,7 @@ const Form = () => {
               className="rounded-circle bg-info color-btn border-0"
               onClick={(e) => setColor("info")}
             ></div>
-          </span>
+          </div>
           <button
             type="submit"
             className="btn btn-success rounded-pill px-5 add-button position-absolute bottom-5 start-5"
