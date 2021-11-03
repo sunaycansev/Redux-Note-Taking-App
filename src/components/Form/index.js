@@ -21,16 +21,13 @@ const Form = () => {
     setValue("");
   };
   return (
-    <div className=" container d-flex justify-content-center align-items-center ">
+    <div className=" container d-flex justify-content-center  ">
       <form onSubmit={handleSubmit}>
-        <div
-          className="my-3 container position-relative my-5"
-          id="textarea-div"
-        >
+        <div className="my-3  position-relative my-5" id="textarea-div">
           <textarea
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            rows={10}
+            rows={8}
             cols={75}
             id="textarea"
             placeholder="Enter your note here..."

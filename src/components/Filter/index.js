@@ -13,10 +13,10 @@ const Filter = () => {
   }, [dispatch, searchValue]);
 
   return (
-    <div className="container d-flex justify-content-center my-5 input-group">
+    <div className="container d-flex justify-content-center my-5 input-group  ">
       <div className="form-outline position-relative">
         <input
-          placeholder="Search"
+          placeholder="Search..."
           className="form-control pe-5 py-2"
           type="text"
           value={searchValue}
